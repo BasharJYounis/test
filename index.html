@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<!-- © 2025 All rights reserved.
+
+It is strictly prohibited to use, copy, republish, or modify this code in any form without the express written consent of the owner and developer of the website, Bashar Jehad Younis. Any unauthorized use will expose the perpetrator to legal liability. Please note that I have contacted the Head of the Cybersecurity Department at the Jordan University of Science and Technology and obtained official approval to publish this website.
+
+© 2025 جميع الحقوق محفوظة.
+
+يحظر استخدام هذا الكود أو نسخه أو إعادة نشره أو تعديله بأي شكل من الأشكال دون الحصول على موافقة خطية صريحة من مالك ومصمم الموقع بشار جهاد يونس. وبالتناوب إن أي استخدام غير مصرح به سيعرض القائم به للمساءلة القانونية. علمًا أنني قد تواصلت مع رئيس قسم الأمن السيبراني في جامعة العلوم والتكنولوجيا الأردنية، وحصلت على الموافقة الرسمية منه لنشر هذا الموقع. -->
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GC411355JP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GC411355JP');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self';
+              script-src 'self' https://cdnjs.cloudflare.com https://html2canvas.hertzen.com 'unsafe-inline';
+              style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';
+              img-src 'self' data:;
+              font-src 'self' https://cdnjs.cloudflare.com;
+              connect-src 'self';
+              object-src 'none';
+              base-uri 'self';">
+    <meta name="description" content="Official Cybersecurity Department Website">
+    <meta name="keywords" content="Cysdepartment, Cys Department, cysdepartment, cys department, Cybersecurity Department JUST, Cybersecurity Department, Cybersecurity, CYS, JUST, CTF, GPA Calculator, Jordan University of Science and Technology, News, Study Materials, Courses, Community">
+    <title>Cybersecurity Department</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0a0a2a;
+            --secondary-color: #00f3ff;
+            --accent-color: #ff00ff;
+            --text-color: #ffffff;
+            --menu-green: #00ff88;
+            --menu-dark-green: #009944;
+            --required-color: #ff4444;
+            --button-blue: #007bff;
+            --button-red: #dc3545;
+            --button-green: #28a745;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--primary-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            line-height: 1.6;
+        }
+
+        .stars-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+            will-change: transform, opacity;
+            z-index: 0;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.3); }
+        }
+
+        .main-header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            min-height: 300px;
+            background: rgba(10, 10, 42, 0.85);
+            z-index: 2;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .binary-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(10,10,42,0.9) 0%, rgba(0,78,146,0.8) 100%);
+        }
+
+        .cyber-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(90deg, rgba(0,243,255,0.05) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(0,243,255,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: gridMove 40s linear infinite;
+        }
+
+        @keyframes gridMove {
+            from { background-position: 0 0; }
+            to { background-position: 400px 400px; }
+        }
+
+        .binary-digit {
+            position: absolute;
+            color: rgba(0, 243, 255, 0.4);
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            user-select: none;
+            text-shadow: 0 0 5px rgba(0,243,255,0.3);
+            transition: opacity 0.8s ease;
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        .logo-container {
+            position: absolute;
+            display: flex;
+            gap: 2rem;
+            width: 100%;
+            justify-content: space-between;
+            padding: 0 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+
+        .logo {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            display: block;
+            transition: all 0.3s ease;
+            object-fit: cover;
+            border: none;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.7);
+            filter: brightness(1.1);
+        }
+
+        .title-container {
+            text-align: center;
+            z-index: 3;
+            padding: 0 20px;
+            margin-top: 0;
+        }
+
+        .main-title {
+            font-size: 3.2rem;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            letter-spacing: 1.5px;
+            font-weight: 700;
+        }
+
+        .sub-title {
+            font-size: 1.4rem;
+            color: rgba(0, 243, 255, 0.9);
+            text-shadow: 0 0 8px rgba(0, 243, 255, 0.2);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            margin-top: 1.2rem;
+        }
+
+        .news-ticker {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            background: var(--primary-color);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid var(--secondary-color);
+            border-top: 2px solid var(--secondary-color);
+        }
+
+        .ticker-wrapper {
+            display: flex;
+            position: absolute;
+            white-space: nowrap;
+            will-change: transform;
+            backface-visibility: hidden;
+            animation: ticker-scroll 40s linear infinite;
+        }
+
+        .ticker-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            padding: 0 1.5rem;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            height: 50px;
+            line-height: 50px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .ticker-item a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .ticker-item a:hover {
+            color: var(--secondary-color);
+            text-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
+        }
+
+        .ticker-separator, .ticker-special-separator {
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, 
+                rgba(0,243,255,0.8) 30%,
+                rgba(255,0,255,0.6) 70%);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 8px rgba(0, 243, 255, 0.3),
+                0 0 12px rgba(255, 0, 255, 0.3);
+            animation: pulse-dot 1.5s infinite;
+            flex-shrink: 0;
+            margin: auto 1.5rem;
+            position: relative;
+            top: 0;
+        }
+
+        @keyframes pulse-dot {
+            0% { transform: scale(0.9); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(0.9); }
+        }
+
+        @keyframes ticker-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .mobile-motivation {
+            display: none;
+            text-align: center;
+            padding: 15px;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-top: 2px solid var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            text-shadow: 0 0 8px rgba(0, 243, 255, 0.3);
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding: 15px 0;
+            background: rgba(0, 0, 0, 0.8);
+            gap: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 11rem;
+            height: 2.8rem;
+            overflow: hidden;
+            background-size: 300% 300%;
+            backdrop-filter: blur(1rem);
+            border-radius: 5rem;
+            transition: 0.5s;
+            animation: gradient_301 5s ease infinite;
+            border: double 4px transparent;
+            background-image: linear-gradient(var(--primary-color), var(--primary-color)), 
+                            linear-gradient(137.48deg, 
+                            var(--secondary-color) 10%,
+                            var(--accent-color) 45%,
+                            var(--secondary-color) 67%,
+                            var(--accent-color) 87%);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            position: relative;
+            margin: 0.3rem;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .nav-button.active {
+            transform: scale(1.15);
+            box-shadow: 0 0 25px var(--secondary-color),
+                        0 0 35px var(--accent-color);
+            animation: activePulse 1.5s infinite;
+        }
+
+        @keyframes activePulse {
+            0%, 100% { transform: scale(1.15); }
+            50% { transform: scale(1.2); }
+        }
+
+        .nav-button strong {
+            z-index: 2;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: var(--text-color);
+            text-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+            padding: 0 0.5rem;
+        }
+
+        #container-stars {
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            transition: 0.5s;
+            backdrop-filter: blur(1rem);
+            border-radius: 5rem;
+        }
+
+        #glow {
+            position: absolute;
+            display: flex;
+            width: 12rem;
+        }
+
+        .circle {
+            width: 100%;
+            height: 30px;
+            filter: blur(2rem);
+            animation: pulse_3011 4s infinite;
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        .circle:nth-of-type(1) {
+            background: var(--secondary-color);
+        }
+
+        .circle:nth-of-type(2) {
+            background: var(--accent-color);
+        }
+
+        .nav-button:hover #container-stars {
+            z-index: 1;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-button:active {
+            border: double 4px var(--accent-color);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            animation: none;
+        }
+
+        .nav-button:active .circle {
+            background: var(--accent-color);
+        }
+
+        #stars {
+            position: relative;
+            background: transparent;
+            width: 200rem;
+            height: 200rem;
+        }
+
+        #stars::after {
+            content: "";
+            position: absolute;
+            top: -10rem;
+            left: -100rem;
+            width: 100%;
+            height: 100%;
+            animation: animStarRotate 90s linear infinite;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1%);
+            background-size: 50px 50px;
+        }
+
+        #stars::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 170%;
+            height: 500%;
+            animation: animStar 60s linear infinite;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1%);
+            background-size: 50px 50px;
+            opacity: 0.5;
+        }
+
+        @keyframes animStar {
+            from { transform: translateY(0); }
+            to { transform: translateY(-135rem); }
+        }
+
+        @keyframes animStarRotate {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0); }
+        }
+
+        @keyframes gradient_301 {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes pulse_3011 {
+            0% { transform: scale(0.75); }
+            70% { transform: scale(1); }
+            100% { transform: scale(0.75); }
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(10, 10, 42, 0.98);
+            width: 100%;
+            z-index: 1100;
+            top: 100%;
+            border-radius: 0 0 8px 8px;
+            overflow: hidden;
+            border: 2px solid var(--secondary-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content button {
+            cursor: pointer;
+            width: 100%;
+            border-radius: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: transparent;
+            color: var(--text-color);
+            font-size: 0.8rem;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dropdown-content button:hover {
+            background: linear-gradient(
+                90deg,
+                rgba(0, 243, 255, 0.1),
+                rgba(255, 0, 255, 0.1)
+            );
+            padding-left: 25px;
+        }
+
+        .image-slider {
+            width: 60%;
+            max-height: 75vh;
+            height: auto;
+            aspect-ratio: 16/9;
+            margin: 3rem auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .slider-image {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 1s ease;
+            transform: scale(1.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .slider-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .slider-image.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: var(--secondary-color);
+            padding: 15px;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-nav:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .prev-slide {
+            left: 20px;
+        }
+
+        .next-slide {
+            right: 20px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--secondary-color);
+            transform: scale(1.2);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1.5rem 2rem;
+            margin-top: 5rem;
+            border-top: 1px solid var(--secondary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+            margin: 0;
+            width: 100%;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            z-index: 2000;
+            border: 2px solid var(--secondary-color);
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: zoomIn 0.4s ease-out;
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .modal::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal::-webkit-scrollbar-track {
+            background: rgba(0, 243, 255, 0.1);
+        }
+
+        .modal::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 4px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            color: var(--secondary-color);
+            font-size: 28px;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .modal-close:hover {
+            transform: none !important;
+        }
+
+        .about-content {
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .features-list ul {
+            margin: 15px 0;
+            padding-left: 1.5em;
+            list-style: none;
+        }
+
+        .features-list li {
+            margin-bottom: 8px;
+            padding-left: .5em;
+            position: relative;
+        }
+
+        .features-list li::before {
+            content: "●";
+            color: var(--secondary-color);
+            position: absolute;
+            left: -1.2em;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8em;
+        }
+
+        .email-button {
+            background: #d44638;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .email-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 70, 56, 0.3);
+        }
+
+        .contact-section {
+            margin-top: 25px;
+            border-top: 1px solid rgba(0, 243, 255, 0.2);
+            padding-top: 20px;
+        }
+
+        .social-media-section {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 243, 255, 0.2);
+        }
+        
+        .social-media-title {
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 10px;
+        }
+        
+        .social-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--secondary-color);
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+            font-family: "Font Awesome 6 Brands", "Font Awesome 6 Free", sans-serif;
+            font-weight: 900;
+            text-decoration: none !important;
+        }
+        
+        .social-icon:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px) scale(1.15);
+            box-shadow: 0 5px 25px rgba(0, 243, 255, 0.7);
+        }
+
+        .nav-button:active, .nav-button:focus {
+            outline: none;
+        }
+        
+        .dropdown-content button:active, .dropdown-content button:focus {
+            outline: none;
+        }
+
+        @media (max-width: 768px) {
+            .site-search-section {
+                padding: 10px 14px 6px;
+            }
+
+            .site-search-shell {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .site-search-box {
+                width: min(100%, 100%);
+                min-height: 54px;
+                padding: 0 18px;
+                gap: 10px;
+                border-width: 2px;
+            }
+
+            .site-search-icon {
+                font-size: 1.08rem;
+            }
+
+            #siteSearchInput {
+                font-size: 1rem;
+                padding: 12px 0;
+            }
+
+            .mobile-motivation {
+                display: none !important;
+            }
+        }
+
+    </style>
+    <link rel="stylesheet" href="theme.css">
+</head>
+<body class="home-page">
+    <div class="stars-background"></div>
+
+    <div id="home-page">
+        <header class="main-header">
+            <div class="binary-rain">
+                <div class="cyber-grid"></div>
+            </div>
+<div class="title-container">
+                <h1 class="main-title">Cybersecurity Department</h1>
+                <h2 class="sub-title">Jordan University of Science and Technology</h2>
+            </div>
+        </header>
+
+        <div class="mobile-motivation">
+           IT is not just a field - it’s the future
+        </div>
+
+        <section class="site-search-section" aria-label="Site search">
+            <div class="site-search-shell">
+                <div class="site-search-box" id="siteSearchBox">
+                    <i class="fas fa-search site-search-icon" aria-hidden="true"></i>
+                    <input type="search" id="siteSearchInput" placeholder="Search..." autocomplete="off" aria-label="Search the website">
+                    <div class="site-search-results" id="siteSearchResults" hidden></div>
+                </div>
+            </div>
+        </section>
+
+
+        <nav class="nav-bar">
+            <button class="nav-button" onclick="window.location.href='academic.html'">
+                <strong>
+                    <i class="fas fa-users"></i>
+                    Academic Staff
+                </strong>
+                <div id="container-stars">
+                    <div id="stars"></div>
+                </div>
+                <div id="glow">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+            </button>
+
+            <div class="dropdown links-dropdown">
+                <button class="nav-button links-btn" onclick="toggleDropdown(this)">
+                    <strong>
+                        <i class="fas fa-link"></i>
+                        Links
+                    </strong>
+                    <div id="container-stars">
+                        <div id="stars"></div>
+                    </div>
+                    <div id="glow">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                </button>
+                <div class="dropdown-content">
+                    <button class="nav-button" onclick="window.open('https://www.just.edu.jo/ar/Pages/Default.aspx', '_blank')" rel="noopener noreferrer">
+                        <i class="fas fa-university"></i>
+                        <span>JUST Website</span>
+                    </button>
+                    <button class="nav-button" onclick="window.open('https://www.instagram.com/justuniversityjo', '_blank')" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                        <span>JUST Instagram</span>
+                    </button>
+                    <button class="nav-button" onclick="window.open('https://www.facebook.com/share/18zGdAoXDQ/', '_blank')" rel="noopener noreferrer">
+                        <i class="fab fa-facebook"></i>
+                        <span>JUST Facebook</span>
+                    </button>
+                    <button class="nav-button" onclick="window.open('https://www.just.edu.jo/ar/aboutjust/Map/Pages/default.aspx?fbclid=PAAabxzJGCoDeWigemndi5FKdR5m52Tjsyk-wzIu-oIqQQ8fkdKP5FqcQNWME', '_blank')" rel="noopener noreferrer">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>JUST Map</span>
+                    </button>
+                    <button class="nav-button" onclick="window.open('https://services.just.edu.jo/sturegistration/', '_blank')" rel="noopener noreferrer">
+                        <i class="fas fa-file-signature"></i>
+                        <span>Course Registration</span>
+                    </button>
+                    <button class="nav-button" onclick="window.open('https://services.just.edu.jo/courseschedule/', '_blank')" rel="noopener noreferrer">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Course Schedule</span>
+                    </button>
+                    <button class="nav-button" onclick="window.open('https://services.just.edu.jo/stuservices/', '_blank')" rel="noopener noreferrer">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>Student Services</span>
+                    </button>
+                    <button class="nav-button" onclick="window.open('https://elearn.just.edu.jo', '_blank')" rel="noopener noreferrer">
+                        <i class="fas fa-laptop-house"></i>
+                        <span>E-Learning</span>
+                    </button>
+                </div>
+            </div>
+
+            <button class="nav-button" onclick="window.open('https://www.just.edu.jo/ar/FacultiesandDepartments/it/Departments/CyberSec/Pages/display.aspx?List=Announcements', '_blank')" rel="noopener noreferrer">
+                <strong>
+                    <i class="fas fa-newspaper"></i>
+                    News
+                </strong>
+                <div id="container-stars">
+                    <div id="stars"></div>
+                </div>
+                <div id="glow">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+            </button>
+
+            <button class="nav-button" onclick="window.location.href='ctf.html'">
+                <strong>
+                    <i class="fas fa-flag-checkered"></i>
+                    CTF
+                </strong>
+                <div id="container-stars">
+                    <div id="stars"></div>
+                </div>
+                <div id="glow">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+            </button>
+
+            <button class="nav-button" onclick="window.location.href='gpa.html'">
+                <strong>
+                    <i class="fas fa-calculator"></i>
+                    GPA Calculator
+                </strong>
+                <div id="container-stars">
+                    <div id="stars"></div>
+                </div>
+                <div id="glow">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+            </button>
+            <button class="nav-button" onclick="window.location.href='cys.html'">
+                <strong>
+                    <i class="fas fa-laptop-code"></i>
+                    Cybersecurity
+                </strong>
+                <div id="container-stars">
+                    <div id="stars"></div>
+                </div>
+                <div id="glow">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+            </button>
+
+
+            <button class="nav-button" onclick="openAboutModal(this)">
+                <strong>
+                    <i class="fas fa-info-circle"></i>
+                    About Us
+                </strong>
+                <div id="container-stars">
+                    <div id="stars"></div>
+                </div>
+                <div id="glow">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+            </button>
+        </nav>
+
+        <div class="image-slider">
+            <button class="slider-nav prev-slide" onclick="prevSlide()">❮</button>
+            <button class="slider-nav next-slide" onclick="nextSlide()">❯</button>
+            
+            <!-- Slide 1 - Developed by: Bashar Jehad Younis -->
+            <div class="slider-image active">
+                <img src="images\slides\slide1.png" alt="1">
+            </div>
+            
+            <!-- Slide 2 - Developed by: Bashar Jehad Younis -->
+            <div class="slider-image">
+                <img src="images\slides\slide2.png" alt="2">
+            </div>
+            
+            <!-- Slide 3 - Developed by: Bashar Jehad Younis -->
+            <div class="slider-image">
+                <img src="images\slides\slide3.png" alt="3">
+            </div>
+
+            <!-- Slide 4 - Developed by: Bashar Jehad Younis -->
+            <div class="slider-image">
+                <img src="images\slides\slide4.png" alt="4">
+            </div>
+
+            <!-- Slide 5 - Developed by: Bashar Jehad Younis -->
+            <div class="slider-image">
+                <img src="images\slides\slide5.png" alt="5">
+            </div>
+
+             <!-- Slide 6 - Developed by: Bashar Jehad Younis -->
+            <div class="slider-image">
+                <img src="images\slides\slide6.png" alt="6">
+            </div>
+
+             <!-- Slide 7 - Developed by: Bashar Jehad Younis -->
+            <div class="slider-image">
+                <img src="images\slides\slide7.png" alt="7">
+            </div>
+            
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+
+        <div id="about-modal" class="modal">
+            <span class="modal-close" onclick="closeAboutModal()">&times;</span>
+            <div class="about-content">
+                <h3>Welcome to Cybersecurity Department Official Website</h3>
+                <p>at Jordan University of Science and Technology <a href="https://www.facebook.com/share/p/1JRaKM55sU/" target="_blank"><i class="fab fa-facebook"></i></a>.</p>
+
+                <p>This website was developed in 2025 by <strong>Bashar Jehad Younis</strong>, 
+                a second-year Cybersecurity student supervised by <strong>Dr. Qasem Abu Al-Haija</strong>, to create a unified platform for academic needs.</p>
+
+                
+<div class="features-list">
+    <h4>Website Features:</h4>
+    <ul>
+        <li>Study Materials <a href="cys.html" target="_self"><i class="fas fa-external-link-alt"></i></a></li>
+        <li>Cybersecurity Community <a href="https://chat.whatsapp.com/IsW3RbKziyx0x5Uq9oSkwa" target="_blank"><i class="fas fa-external-link-alt"></i></a></li>
+        <li>GPA Calculator <a href="gpa.html"><i class="fas fa-external-link-alt"></i></a></li>
+        <li>CTF guide <a href="ctf.html"><i class="fas fa-external-link-alt"></i></a></li>
+        <li>Quick access to university platforms <a href="#" onclick="goToLinks(event)"><i class="fas fa-external-link-alt"></i></a></li>
+        <li>Easy communication with academic staff <a href="academic.html"><i class="fas fa-external-link-alt"></i></a></li>
+    </ul>
+</div>
+
+
+                <div class="mission-section">
+                    <h4>Our goal:</h4>
+                    <p>Build a collaborative student community that promotes knowledge sharing 
+                    and enhances learning experiences.</p>
+                </div>
+
+                <div class="contact-section">
+                    <h4>Contact Us:</h4>
+                    <p>For suggestions or issues:</p>
+                    <a href="mailto:basharjyounis@gmail.com" 
+                       class="email-button" 
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="fas fa-envelope"></i>
+                        Email
+                    </a>
+                </div>
+                
+                <div class="social-media-section">
+                    <h4 class="social-media-title">Developer's Social Media</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/basharjyounis" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/basharjyounis" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/bashar-younis-57b8332b5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://basharjyounis.github.io/My-Website/" target="_blank" class="social-icon">
+                            <i class="fa fa-globe"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-logos" aria-label="Department and university logos">
+                <img src="images\logos\logo-left.png" class="footer-logo" alt="Cybersecurity Department Logo">
+                <img src="images\logos\logo-center.png" class="footer-logo" alt="Third Logo">
+                <img src="images\logos\logo-right.png" class="footer-logo" alt="Jordan University of Science and Technology Logo">
+            </div>
+            <p class="copyright">&copy; 2025 Cybersecurity Department - All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <script>
+        let activeModalButton = null;
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slider-image');
+        let sliderInterval;
+
+        function createStars() {
+            const starsContainer = document.querySelector('.stars-background');
+            const isMobile = window.innerWidth <= 768;
+            const starCount = isMobile ? 50 : 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const size = Math.random() * 3;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                const duration = 2 + Math.random() * 3;
+                const delay = Math.random() * 5;
+                star.style.animation = `twinkle ${duration}s ${delay}s infinite`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function createBinaryRain() {
+            if (window.innerWidth <= 768) return;
+            
+            const binaryRain = document.querySelector('.binary-rain');
+            const mainHeader = document.querySelector('.main-header');
+            const mainHeaderBottom = mainHeader.getBoundingClientRect().bottom;
+            const characters = '01';
+            const columns = Math.floor(window.innerWidth / 35);
+
+            function createDigit() {
+                const digit = document.createElement('div');
+                digit.className = 'binary-digit';
+                digit.style.left = `${Math.random() * 100}%`;
+                digit.style.top = `-30px`;
+                digit.textContent = characters[Math.floor(Math.random() * characters.length)];
+                binaryRain.appendChild(digit);
+
+                let currentY = -30;
+                const speed = 1.5 + Math.random() * 2;
+
+                function animate() {
+                    currentY += speed;
+                    digit.style.top = `${currentY}px`;
+
+                    if (currentY < mainHeaderBottom - 20) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        digit.style.opacity = '0';
+                        setTimeout(() => digit.remove(), 500);
+                    }
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            setInterval(() => {
+                if (binaryRain.childElementCount < 50) {
+                    createDigit();
+                }
+            }, 300);
+        }
+
+        function loadTickerNews() {
+            const newsItems = [
+                { text: "GeeksforGeeks", link: "https://www.geeksforgeeks.org/" },
+                { text: "Security Boulevard", link: "https://securityboulevard.com/" },
+                { text: "IoT For All", link: "https://www.iotforall.com/" },
+                { text: "Stack Overflow", link: "https://stackoverflow.com/questions" },
+                { text: "Game Developer", link: "https://www.gamedeveloper.com/" },
+                { text: "Krebs on Security", link: "https://krebsonsecurity.com/" },
+                { text: "DEV Community", link: "https://dev.to/" },
+                { text: "Hackster.io", link: "https://www.hackster.io/" },
+                { text: "GameDev", link: "https://www.gamedev.net/" },
+                { text: "HackerNoon", link: "https://hackernoon.com/" }
+            ];
+
+            const tickerContainer = document.getElementById('tickerContainer');
+            const newsTicker = document.querySelector('.news-ticker');
+            if (!tickerContainer || !newsTicker) return;
+            
+            tickerContainer.innerHTML = '';
+            
+            newsItems.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'ticker-item';
+                
+                if (item.link) {
+                    itemDiv.innerHTML = `<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.text}</a>`;
+                } else {
+                    itemDiv.innerHTML = `<span>${item.text}</span>`;
+                }
+                
+                tickerContainer.appendChild(itemDiv);
+                
+                if (index !== newsItems.length - 1) {
+                    const separator = document.createElement('div');
+                    separator.className = 'ticker-separator';
+                    tickerContainer.appendChild(separator);
+                }
+            });
+
+            const clonedItems = tickerContainer.cloneNode(true);
+            clonedItems.id = 'tickerContainerClone';
+            
+            document.getElementById('tickerWrapper').appendChild(clonedItems);
+
+            // Developed by: Bashar Jehad Younis
+            const wrapper = document.getElementById('tickerWrapper');
+            wrapper.style.animation = 'none';
+            void wrapper.offsetWidth;
+            wrapper.style.animation = 'ticker-scroll 40s linear infinite';
+            
+            // Set up hover functionality - Developed by: Bashar Jehad Younis
+            newsTicker.addEventListener('mouseenter', () => {
+                wrapper.style.animationPlayState = 'paused';
+            });
+
+            newsTicker.addEventListener('mouseleave', () => {
+                wrapper.style.animationPlayState = 'running';
+            });
+        }
+
+
+        const siteSearchIndex = [{"label": "Cybersecurity", "fullName": "Cybersecurity page", "kind": "internal", "href": "cys.html", "aliases": ["cybersecurity", "cys", "about cys", "study materials"]}, {"label": "Academic Staff", "fullName": "Faculty and department academic staff", "kind": "internal", "href": "academic.html", "aliases": ["academic staff", "staff", "doctors", "faculty"]}, {"label": "CTF", "fullName": "Capture The Flag page", "kind": "internal", "href": "ctf.html", "aliases": ["ctf", "capture the flag", "competitions", "what is ctf"]}, {"label": "GPA Calculator", "fullName": "Calculate GPA and semester GPA", "kind": "internal", "href": "gpa.html", "aliases": ["gpa", "calculator", "grades", "marks"]}, {"label": "News", "fullName": "Cybersecurity department news", "kind": "external", "href": "https://www.just.edu.jo/ar/FacultiesandDepartments/it/Departments/CyberSec/Pages/display.aspx?List=Announcements", "aliases": ["news", "announcements"]}, {"label": "About Us", "fullName": "About the Cybersecurity Department site", "kind": "action", "action": "about-modal", "aliases": ["about us", "about", "department info"]}, {"label": "JUST Website", "fullName": "Official Jordan University of Science and Technology website", "kind": "external", "href": "https://www.just.edu.jo/ar/Pages/Default.aspx", "aliases": ["just website", "university website", "just"]}, {"label": "JUST Map", "fullName": "Official JUST map", "kind": "external", "href": "https://www.just.edu.jo/ar/aboutjust/Map/Pages/default.aspx", "aliases": ["just map", "map", "campus map"]}, {"label": "Course Registration", "fullName": "JUST course registration services", "kind": "external", "href": "https://services.just.edu.jo/sturegistration/", "aliases": ["course registration", "registration"]}, {"label": "Course Schedule", "fullName": "JUST course schedule", "kind": "external", "href": "https://services.just.edu.jo/courseschedule/", "aliases": ["course schedule", "schedule", "timetable"]}, {"label": "Student Services", "fullName": "JUST student services portal", "kind": "external", "href": "https://services.just.edu.jo/stuservices/", "aliases": ["student services", "services"]}, {"label": "E-Learning", "fullName": "JUST e-learning portal", "kind": "external", "href": "https://elearn.just.edu.jo", "aliases": ["e-learning", "elearning", "lms"]}, {"label": "Computer 99", "fullName": "Computer Skills (Remedial Course)", "menuId": "supplementary-menu", "menuTitle": "Supplementary Books", "bookId": "sup-book1", "kind": "material", "aliases": ["Computer 99", "Computer Skills (Remedial Course)"]}, {"label": "English 99", "fullName": "English Language (Remedial Course)", "menuId": "supplementary-menu", "menuTitle": "Supplementary Books", "bookId": "sup-book2", "kind": "material", "aliases": ["English 99", "English Language (Remedial Course)"]}, {"label": "Arabic", "fullName": "Communication Skills in Arabic", "menuId": "univ-compulsory-menu", "menuTitle": "University Compulsory Books", "bookId": "uc-book1", "kind": "material", "aliases": ["Arabic", "Communication Skills in Arabic"]}, {"label": "Leadership", "fullName": "Leader and Social Responsibility", "menuId": "univ-compulsory-menu", "menuTitle": "University Compulsory Books", "bookId": "uc-book2", "kind": "material", "aliases": ["Leadership", "Leader and Social Responsibility"]}, {"label": "Entrepreneurship", "fullName": "Entrepreneurship and Innovation", "menuId": "univ-compulsory-menu", "menuTitle": "University Compulsory Books", "bookId": "uc-book3", "kind": "material", "aliases": ["Entrepreneurship", "Entrepreneurship and Innovation"]}, {"label": "Military Sciences", "fullName": "Military Sciences", "menuId": "univ-compulsory-menu", "menuTitle": "University Compulsory Books", "bookId": "uc-book4", "kind": "material", "aliases": ["Military Sciences"]}, {"label": "English 101", "fullName": "Communication Skills in English", "menuId": "univ-compulsory-menu", "menuTitle": "University Compulsory Books", "bookId": "uc-book5", "kind": "material", "aliases": ["English 101", "Communication Skills in English"]}, {"label": "Life Skills", "fullName": "Life Skills", "menuId": "univ-compulsory-menu", "menuTitle": "University Compulsory Books", "bookId": "uc-book6", "kind": "material", "aliases": ["Life Skills"]}, {"label": "Appreciation", "fullName": "Appreciation of Literary Texts", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book1", "kind": "material", "aliases": ["Appreciation", "Appreciation of Literary Texts"]}, {"label": "Health Promotion", "fullName": "Health Promotion", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book2", "kind": "material", "aliases": ["Health Promotion"]}, {"label": "Disability", "fullName": "Disability and The Society", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book3", "kind": "material", "aliases": ["Disability", "Disability and The Society"]}, {"label": "Wellness", "fullName": "Wellness and Life Styles", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book4", "kind": "material", "aliases": ["Wellness", "Wellness and Life Styles"]}, {"label": "Dental Health", "fullName": "Oral & Dental Health", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book5", "kind": "material", "aliases": ["Dental Health", "Oral & Dental Health"]}, {"label": "Ai Applications", "fullName": "Ai Applications", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book6", "kind": "material", "aliases": ["Ai Applications"]}, {"label": "Renewable Energy", "fullName": "Introduction to Renewable Energy", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book7", "kind": "material", "aliases": ["Renewable Energy", "Introduction to Renewable Energy"]}, {"label": "Palestinian Issue", "fullName": "The Palestinian Issue", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book8", "kind": "material", "aliases": ["Palestinian Issue", "The Palestinian Issue"]}, {"label": "Ourism in Jordan", "fullName": "Ourism and Museums in Jordan", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book9", "kind": "material", "aliases": ["Ourism in Jordan", "Ourism and Museums in Jordan"]}, {"label": "Community Health", "fullName": "Community Health and Nutrition", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book10", "kind": "material", "aliases": ["Community Health", "Community Health and Nutrition"]}, {"label": "Road Safety", "fullName": "Road Safety", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book11", "kind": "material", "aliases": ["Road Safety"]}, {"label": "Family Health", "fullName": "Family Health", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book12", "kind": "material", "aliases": ["Family Health"]}, {"label": "Islam and Recent Problems", "fullName": "Islam and Recent Problems", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book13", "kind": "material", "aliases": ["Islam and Recent Problems"]}, {"label": "Economic System in Islam", "fullName": "Economic System in Islam", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book14", "kind": "material", "aliases": ["Economic System in Islam"]}, {"label": "Sociology", "fullName": "Principles of Sociology", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book15", "kind": "material", "aliases": ["Sociology", "Principles of Sociology"]}, {"label": "Psychology", "fullName": "Principles of Psychology", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book16", "kind": "material", "aliases": ["Psychology", "Principles of Psychology"]}, {"label": "Educational Technology", "fullName": "Educational Technology", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book17", "kind": "material", "aliases": ["Educational Technology"]}, {"label": "Digital Skills", "fullName": "Digital Skills", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book18", "kind": "material", "aliases": ["Digital Skills"]}, {"label": "Islamic Civilization", "fullName": "Islamic Civilization", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book19", "kind": "material", "aliases": ["Islamic Civilization"]}, {"label": "History of Jerusalem", "fullName": "The History of The City of Jerusalem", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book20", "kind": "material", "aliases": ["History of Jerusalem", "The History of The City of Jerusalem"]}, {"label": "Recent Cultures", "fullName": "Civilization and Recent Cultures", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book21", "kind": "material", "aliases": ["Recent Cultures", "Civilization and Recent Cultures"]}, {"label": "Islamic Culture", "fullName": "Islamic Culture", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book22", "kind": "material", "aliases": ["Islamic Culture"]}, {"label": "Law in Our Life", "fullName": "The Law in Our Life", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book23", "kind": "material", "aliases": ["Law in Our Life", "The Law in Our Life"]}, {"label": "Human Rights", "fullName": "Human Rights", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book24", "kind": "material", "aliases": ["Human Rights"]}, {"label": "Contemporary Challenges", "fullName": "Islam and Contemporary Challenges", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book25", "kind": "material", "aliases": ["Contemporary Challenges", "Islam and Contemporary Challenges"]}, {"label": "Contemporary Problems", "fullName": "Contemporary Problems", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book26", "kind": "material", "aliases": ["Contemporary Problems"]}, {"label": "Food Preservation", "fullName": "Food Preservation", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book27", "kind": "material", "aliases": ["Food Preservation"]}, {"label": "Nanotechnology", "fullName": "Introduction to The Nanotechnology", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book28", "kind": "material", "aliases": ["Nanotechnology", "Introduction to The Nanotechnology"]}, {"label": "Farm Animal Products", "fullName": "Farm Animal Products", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book29", "kind": "material", "aliases": ["Farm Animal Products"]}, {"label": "Home Gardens", "fullName": "Home Gardens", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book30", "kind": "material", "aliases": ["Home Gardens"]}, {"label": "Natural Resources", "fullName": "Natural Resources and Human", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book31", "kind": "material", "aliases": ["Natural Resources", "Natural Resources and Human"]}, {"label": "Nuclear Energy", "fullName": "Principles in Nuclear Energy and it's Peaceful Applications", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book32", "kind": "material", "aliases": ["Nuclear Energy", "Principles in Nuclear Energy and it's Peaceful Applications"]}, {"label": "Beekeeping", "fullName": "Beekeeping", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book33", "kind": "material", "aliases": ["Beekeeping"]}, {"label": "Natural Plants of Jordan", "fullName": "Natural Plants of Jordan", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book34", "kind": "material", "aliases": ["Natural Plants of Jordan"]}, {"label": "Plant Earth", "fullName": "Plant Earth Problems & Solutions", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book35", "kind": "material", "aliases": ["Plant Earth", "Plant Earth Problems & Solutions"]}, {"label": "Sociology", "fullName": "Sociology", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book36", "kind": "material", "aliases": ["Sociology"]}, {"label": "Animal Health", "fullName": "Animal Health", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book37", "kind": "material", "aliases": ["Animal Health"]}, {"label": "Pet Animal Care", "fullName": "Pet Animal Care", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book38", "kind": "material", "aliases": ["Pet Animal Care"]}, {"label": "Individual and Society", "fullName": "Individual and Society", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book39", "kind": "material", "aliases": ["Individual and Society"]}, {"label": "Animal Behaviour", "fullName": "Animal Behaviour and Welfare", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book40", "kind": "material", "aliases": ["Animal Behaviour", "Animal Behaviour and Welfare"]}, {"label": "Animal Products", "fullName": "Animal Products and Public Health", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book41", "kind": "material", "aliases": ["Animal Products", "Animal Products and Public Health"]}, {"label": "Global Issues", "fullName": "International Global Issues", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book42", "kind": "material", "aliases": ["Global Issues", "International Global Issues"]}, {"label": "History of Sciences in Islam", "fullName": "History of Sciences in Islam", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book43", "kind": "material", "aliases": ["History of Sciences in Islam"]}, {"label": "Music Tasting", "fullName": "Music Tasting", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book44", "kind": "material", "aliases": ["Music Tasting"]}, {"label": "Environment", "fullName": "Sustainable Development and Environment", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book45", "kind": "material", "aliases": ["Environment", "Sustainable Development and Environment"]}, {"label": "French Language", "fullName": "Basic French Language", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book46", "kind": "material", "aliases": ["French Language", "Basic French Language"]}, {"label": "German Language", "fullName": "Basic German Language", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book47", "kind": "material", "aliases": ["German Language", "Basic German Language"]}, {"label": "Spanish Language", "fullName": "Spanish Language", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book48", "kind": "material", "aliases": ["Spanish Language"]}, {"label": "Turkish Language", "fullName": "Turkish Language", "menuId": "univ-elective-menu", "menuTitle": "University Elective Books", "bookId": "ue-book49", "kind": "material", "aliases": ["Turkish Language"]}, {"label": "Calculus 1", "fullName": "Calculus 1", "menuId": "faculty-compulsory-menu", "menuTitle": "Faculty Compulsory Books", "bookId": "fc-book1", "kind": "material", "aliases": ["Calculus 1"]}, {"label": "Calculus 2", "fullName": "Calculus 2", "menuId": "faculty-compulsory-menu", "menuTitle": "Faculty Compulsory Books", "bookId": "fc-book2", "kind": "material", "aliases": ["Calculus 2"]}, {"label": "Intro", "fullName": "Introduction to Information Technology", "menuId": "faculty-compulsory-menu", "menuTitle": "Faculty Compulsory Books", "bookId": "fc-book3", "kind": "material", "aliases": ["Intro", "Introduction to Information Technology"]}, {"label": "C++", "fullName": "Introduction to Programming", "menuId": "faculty-compulsory-menu", "menuTitle": "Faculty Compulsory Books", "bookId": "fc-book4", "kind": "material", "aliases": ["C++", "Introduction to Programming", "cpp", "c plus plus"]}, {"label": "C++ (Lab)", "fullName": "Introduction to Programming (Lab)", "menuId": "faculty-compulsory-menu", "menuTitle": "Faculty Compulsory Books", "bookId": "fc-book5", "kind": "material", "aliases": ["C++ (Lab)", "Introduction to Programming (Lab)", "cpp", "c plus plus"]}, {"label": "OOP", "fullName": "Introduction to Object - Oriented Programming", "menuId": "faculty-compulsory-menu", "menuTitle": "Faculty Compulsory Books", "bookId": "fc-book6", "kind": "material", "aliases": ["OOP", "Introduction to Object - Oriented Programming", "oop"]}, {"label": "OOP (Lab)", "fullName": "Introduction to Object - Oriented Programming (Lab)", "menuId": "faculty-compulsory-menu", "menuTitle": "Faculty Compulsory Books", "bookId": "fc-book7", "kind": "material", "aliases": ["OOP (Lab)", "Introduction to Object - Oriented Programming (Lab)", "oop"]}, {"label": "Data Structures", "fullName": "Data Structures", "menuId": "faculty-compulsory-menu", "menuTitle": "Faculty Compulsory Books", "bookId": "fc-book8", "kind": "material", "aliases": ["Data Structures"]}, {"label": "Database", "fullName": "Fundamentals of Database Systems", "menuId": "faculty-compulsory-menu", "menuTitle": "Faculty Compulsory Books", "bookId": "fc-book9", "kind": "material", "aliases": ["Database", "Fundamentals of Database Systems"]}, {"label": "Discrete", "fullName": "Discrete Mathematics", "menuId": "faculty-compulsory-menu", "menuTitle": "Faculty Compulsory Books", "bookId": "fc-book10", "kind": "material", "aliases": ["Discrete", "Discrete Mathematics"]}, {"label": "Physics (2)", "fullName": "General Physics (2)", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book1", "kind": "material", "aliases": ["Physics (2)", "General Physics (2)"]}, {"label": "Prob", "fullName": "Probability & Statistics", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book2", "kind": "material", "aliases": ["Prob", "Probability & Statistics"]}, {"label": "Linear", "fullName": "Linear Algebra", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book3", "kind": "material", "aliases": ["Linear", "Linear Algebra"]}, {"label": "Algo", "fullName": "Analysis and Design of Algorithms", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book4", "kind": "material", "aliases": ["Algo", "Analysis and Design of Algorithms"]}, {"label": "CIS Ethics", "fullName": "Communication & Professional Ethics", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book5", "kind": "material", "aliases": ["CIS Ethics", "Communication & Professional Ethics"]}, {"label": "Systems", "fullName": "Systems Analysis and Design", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book6", "kind": "material", "aliases": ["Systems", "Systems Analysis and Design"]}, {"label": "CYS Fundamentals", "fullName": "Cybersecurity Fundamentals", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book7", "kind": "material", "aliases": ["CYS Fundamentals", "Cybersecurity Fundamentals"]}, {"label": "Assembly", "fullName": "Assembly Language Laboratory", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book8", "kind": "material", "aliases": ["Assembly", "Assembly Language Laboratory"]}, {"label": "Python", "fullName": "Programming for Cybersecurity", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book9", "kind": "material", "aliases": ["Python", "Programming for Cybersecurity"]}, {"label": "Crypto", "fullName": "Cryptography", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book10", "kind": "material", "aliases": ["Crypto", "Cryptography"]}, {"label": "Database Sec", "fullName": "Database Systems Security", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book11", "kind": "material", "aliases": ["Database Sec", "Database Systems Security"]}, {"label": "Database Sec Lab", "fullName": "Database Systems Security Lab", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book12", "kind": "material", "aliases": ["Database Sec Lab", "Database Systems Security Lab"]}, {"label": "Networks", "fullName": "Computer Networks", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book13", "kind": "material", "aliases": ["Networks", "Computer Networks"]}, {"label": "Networks Lab", "fullName": "Computer Networks Laboratory", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book14", "kind": "material", "aliases": ["Networks Lab", "Computer Networks Laboratory"]}, {"label": "Networks Sec & Def", "fullName": "Networks Security & Defense", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book15", "kind": "material", "aliases": ["Networks Sec & Def", "Networks Security & Defense"]}, {"label": "Networks Sec & Def Lab", "fullName": "Networks Security & Defense Lab", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book16", "kind": "material", "aliases": ["Networks Sec & Def Lab", "Networks Security & Defense Lab"]}, {"label": "Reverse", "fullName": "Malware Analysis and Reverse Engineering", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book17", "kind": "material", "aliases": ["Reverse", "Malware Analysis and Reverse Engineering"]}, {"label": "Linux", "fullName": "Infrastructure Security Using Linux", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book18", "kind": "material", "aliases": ["Linux", "Infrastructure Security Using Linux"]}, {"label": "OS Sec", "fullName": "Operating Systems and Security", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book19", "kind": "material", "aliases": ["OS Sec", "Operating Systems and Security"]}, {"label": "Risk", "fullName": "Risk Management", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book20", "kind": "material", "aliases": ["Risk", "Risk Management"]}, {"label": "CYS Ethics", "fullName": "Cybersecurity Audits, Compliance, & Ethics", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book21", "kind": "material", "aliases": ["CYS Ethics", "Cybersecurity Audits, Compliance, & Ethics"]}, {"label": "Software Sec", "fullName": "Software Security", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book22", "kind": "material", "aliases": ["Software Sec", "Software Security"]}, {"label": "Web", "fullName": "Web Development & Security", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book23", "kind": "material", "aliases": ["Web", "Web Development & Security"]}, {"label": "Web Lab", "fullName": "Web Development & Security Lab", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book24", "kind": "material", "aliases": ["Web Lab", "Web Development & Security Lab"]}, {"label": "Security Analytics", "fullName": "Security Analytics", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book25", "kind": "material", "aliases": ["Security Analytics"]}, {"label": "Ethical Hacking", "fullName": "Ethical Hacking", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book26", "kind": "material", "aliases": ["Ethical Hacking"]}, {"label": "Ethical Hacking Lab", "fullName": "Ethical Hacking Lab", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book27", "kind": "material", "aliases": ["Ethical Hacking Lab"]}, {"label": "Forensics", "fullName": "Digital Forensics", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book28", "kind": "material", "aliases": ["Forensics", "Digital Forensics"]}, {"label": "Forensics Lab", "fullName": "Digital Forensics Laboratory", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book29", "kind": "material", "aliases": ["Forensics Lab", "Digital Forensics Laboratory"]}, {"label": "Project (1)", "fullName": "Cybersecurity Capstone Project (1)", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book30", "kind": "material", "aliases": ["Project (1)", "Cybersecurity Capstone Project (1)"]}, {"label": "Project (2)", "fullName": "Cybersecurity Capstone Project (2)", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book31", "kind": "material", "aliases": ["Project (2)", "Cybersecurity Capstone Project (2)"]}, {"label": "Field Training", "fullName": "Field Training", "menuId": "dept-compulsory-menu", "menuTitle": "Department Compulsory Books", "bookId": "dc-book32", "kind": "material", "aliases": ["Field Training"]}, {"label": "Mobile App", "fullName": "Mobile App Development", "menuId": "dept-elective-menu", "menuTitle": "Department Elective Books", "bookId": "de-book1", "kind": "material", "aliases": ["Mobile App", "Mobile App Development"]}, {"label": "Cloud Sec", "fullName": "Cloud Computing Security", "menuId": "dept-elective-menu", "menuTitle": "Department Elective Books", "bookId": "de-book2", "kind": "material", "aliases": ["Cloud Sec", "Cloud Computing Security"]}, {"label": "IoT Sec", "fullName": "IoT Security", "menuId": "dept-elective-menu", "menuTitle": "Department Elective Books", "bookId": "de-book3", "kind": "material", "aliases": ["IoT Sec", "IoT Security"]}, {"label": "Healthcare", "fullName": "Healthcare Security and Privacy", "menuId": "dept-elective-menu", "menuTitle": "Department Elective Books", "bookId": "de-book4", "kind": "material", "aliases": ["Healthcare", "Healthcare Security and Privacy"]}, {"label": "Deep Learning", "fullName": "Deep Learning", "menuId": "dept-elective-menu", "menuTitle": "Department Elective Books", "bookId": "de-book5", "kind": "material", "aliases": ["Deep Learning"]}, {"label": "Stegano", "fullName": "Introduction to Steganography", "menuId": "dept-elective-menu", "menuTitle": "Department Elective Books", "bookId": "de-book6", "kind": "material", "aliases": ["Stegano", "Introduction to Steganography"]}, {"label": "Advanced Crypto", "fullName": "Advanced Cryptography", "menuId": "dept-elective-menu", "menuTitle": "Department Elective Books", "bookId": "de-book7", "kind": "material", "aliases": ["Advanced Crypto", "Advanced Cryptography"]}, {"label": "Hardware Sec", "fullName": "Introduction to Hardware Security", "menuId": "dept-elective-menu", "menuTitle": "Department Elective Books", "bookId": "de-book8", "kind": "material", "aliases": ["Hardware Sec", "Introduction to Hardware Security"]}, {"label": "Formal", "fullName": "Formal Methods for Cybersecurity", "menuId": "dept-elective-menu", "menuTitle": "Department Elective Books", "bookId": "de-book9", "kind": "material", "aliases": ["Formal", "Formal Methods for Cybersecurity"]}, {"label": "Mobile Sec", "fullName": "Mobile and Wireless Security", "menuId": "dept-elective-menu", "menuTitle": "Department Elective Books", "bookId": "de-book10", "kind": "material", "aliases": ["Mobile Sec", "Mobile and Wireless Security"]}, {"label": "Special Topics (1)", "fullName": "Special Topics in Cybersecurity (1)", "menuId": "dept-elective-menu", "menuTitle": "Department Elective Books", "bookId": "de-book11", "kind": "material", "aliases": ["Special Topics (1)", "Special Topics in Cybersecurity (1)"]}, {"label": "Special Topics (2)", "fullName": "Special Topics in Cybersecurity (2)", "menuId": "dept-elective-menu", "menuTitle": "Department Elective Books", "bookId": "de-book12", "kind": "material", "aliases": ["Special Topics (2)", "Special Topics in Cybersecurity (2)"]}];
+        let activeSearchIndex = -1;
+
+        function normalizeSearchValue(value) {
+            return (value || '')
+                .toLowerCase()
+                .replace(/&/g, ' and ')
+                .replace(/[-_/(),.:]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function scoreSearchItem(item, query) {
+            const normalizedQuery = normalizeSearchValue(query);
+            if (!normalizedQuery) return 0;
+            const values = [item.label, item.fullName].concat(item.aliases || []);
+            let bestScore = 0;
+            values.forEach(value => {
+                const normalizedValue = normalizeSearchValue(value);
+                if (!normalizedValue) return;
+                if (normalizedValue === normalizedQuery) bestScore = Math.max(bestScore, 120);
+                else if (normalizedValue.startsWith(normalizedQuery)) bestScore = Math.max(bestScore, 90);
+                else if (normalizedValue.includes(normalizedQuery)) bestScore = Math.max(bestScore, 70);
+                else {
+                    const words = normalizedValue.split(' ');
+                    if (words.some(word => word.startsWith(normalizedQuery))) bestScore = Math.max(bestScore, 60);
+                }
+            });
+            if (item.kind === 'material') bestScore += 4;
+            return bestScore;
+        }
+
+        function getSearchTag(kind) {
+            if (kind === 'material') return 'Material';
+            if (kind === 'external') return 'Link';
+            if (kind === 'action') return 'Section';
+            if (kind === 'easter') return 'Respect';
+            return 'Page';
+        }
+
+        function handleSearchSelection(item) {
+            if (!item) return;
+            if (item.kind === 'easter') return;
+            if (item.kind === 'material') {
+                const url = `cys.html?menu=${encodeURIComponent(item.menuId)}&book=${encodeURIComponent(item.bookId)}`;
+                window.location.href = url;
+                return;
+            }
+            if (item.kind === 'external') {
+                window.open(item.href, '_blank', 'noopener');
+                return;
+            }
+            if (item.kind === 'action' && item.action === 'about-modal') {
+                const aboutButton = document.querySelector('button[onclick*="openAboutModal"]');
+                if (aboutButton) openAboutModal(aboutButton);
+                return;
+            }
+            if (item.href) {
+                window.location.href = item.href;
+            }
+        }
+
+        function createSearchResultButton(item, index) {
+            return `
+                <button type="button" class="site-search-result${item.kind === 'easter' ? ' easter-egg' : ''}${index === activeSearchIndex ? ' is-active' : ''}" data-index="${index}">
+                    <span class="site-search-result-main">
+                        <span class="site-search-result-label">${item.label}</span>
+                        <span class="site-search-result-full">${item.fullName || ''}</span>
+                    </span>
+                    <span class="site-search-result-tag">${getSearchTag(item.kind)}</span>
+                </button>
+            `;
+        }
+
+        function setupSiteSearch() {
+            const input = document.getElementById('siteSearchInput');
+            const resultsBox = document.getElementById('siteSearchResults');
+            if (!input || !resultsBox) return;
+
+            let currentResults = [];
+
+            const closeResults = () => {
+                resultsBox.hidden = true;
+                resultsBox.innerHTML = '';
+                activeSearchIndex = -1;
+            };
+
+            const getDynamicResults = (query) => {
+                const normalized = normalizeSearchValue(query);
+                if (normalized === 'bashar') {
+                    return [{
+                        label: 'Bashar detected.',
+                        fullName: 'System integrity: 100% ✔️',
+                        kind: 'easter'
+                    }];
+                }
+                return [];
+            };
+
+            const renderResults = (query) => {
+                const trimmed = query.trim();
+                if (!trimmed) {
+                    closeResults();
+                    return;
+                }
+
+                const dynamicResults = getDynamicResults(trimmed);
+                const staticResults = siteSearchIndex
+                    .map(item => ({ item, score: scoreSearchItem(item, trimmed) }))
+                    .filter(entry => entry.score > 0)
+                    .sort((a, b) => b.score - a.score || a.item.label.localeCompare(b.item.label))
+                    .slice(0, 8)
+                    .map(entry => entry.item);
+
+                currentResults = [...dynamicResults, ...staticResults].slice(0, 8);
+
+                if (!currentResults.length) {
+                    resultsBox.hidden = false;
+                    resultsBox.innerHTML = '<div class="site-search-empty">No matching results found.</div>';
+                    activeSearchIndex = -1;
+                    return;
+                }
+
+                if (activeSearchIndex >= currentResults.length) activeSearchIndex = -1;
+                resultsBox.hidden = false;
+                resultsBox.innerHTML = currentResults.map((item, index) => createSearchResultButton(item, index)).join('');
+
+                resultsBox.querySelectorAll('.site-search-result').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const resultItem = currentResults[Number(button.dataset.index)];
+                        handleSearchSelection(resultItem);
+                    });
+                });
+            };
+
+            input.addEventListener('input', () => {
+                activeSearchIndex = -1;
+                renderResults(input.value);
+            });
+
+            input.addEventListener('keydown', (event) => {
+                if (resultsBox.hidden) return;
+                if (event.key === 'ArrowDown') {
+                    event.preventDefault();
+                    activeSearchIndex = Math.min(activeSearchIndex + 1, currentResults.length - 1);
+                    renderResults(input.value);
+                } else if (event.key === 'ArrowUp') {
+                    event.preventDefault();
+                    activeSearchIndex = Math.max(activeSearchIndex - 1, 0);
+                    renderResults(input.value);
+                } else if (event.key === 'Enter') {
+                    event.preventDefault();
+                    const selected = currentResults[activeSearchIndex] || currentResults[0];
+                    handleSearchSelection(selected);
+                } else if (event.key === 'Escape') {
+                    closeResults();
+                }
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!event.target.closest('.site-search-box')) closeResults();
+            });
+        }
+
+        function closeAllOpenElements() {
+
+            document.querySelectorAll('.dropdown.active').forEach(d => d.classList.remove('active'));
+            document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+        }
+
+        function initializeSlider() {
+            const dotContainer = document.getElementById('sliderDots');
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = `dot ${index === 0 ? 'active' : ''}`;
+                dot.onclick = () => goToSlide(index);
+                dotContainer.appendChild(dot);
+            });
+            updateSlider();
+            startSliderInterval();
+        }
+
+        function goToSlide(n) {
+            currentSlide = n;
+            updateSlider();
+            resetSliderInterval();
+        }
+
+        function updateSlider() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlider();
+            resetSliderInterval();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSlider();
+            resetSliderInterval();
+        }
+
+        function startSliderInterval() {
+            sliderInterval = setInterval(nextSlide, 7000);
+        }
+
+        function resetSliderInterval() {
+            clearInterval(sliderInterval);
+            startSliderInterval();
+        }
+
+        function toggleDropdown(button) {
+            const dropdown = button.closest('.dropdown');
+            const isActive = dropdown.classList.toggle('active');
+            const content = dropdown.querySelector('.dropdown-content');
+            
+            button.setAttribute('aria-expanded', isActive);
+            content.setAttribute('aria-hidden', !isActive);
+            
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if(d !== dropdown) {
+                    d.classList.remove('active');
+                    d.querySelector('.nav-button').classList.remove('active');
+                }
+            });
+            
+            button.classList.toggle('active', isActive);
+            
+            if(isActive) {
+                setTimeout(() => {
+                    document.addEventListener('click', closeDropdownsOutside);
+                }, 10);
+            } else {
+                document.removeEventListener('click', closeDropdownsOutside);
+            }
+        }
+
+        function closeDropdownsOutside(e) {
+            if(!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown').forEach(d => {
+                    d.classList.remove('active');
+                    d.querySelector('.nav-button').classList.remove('active');
+                });
+                document.removeEventListener('click', closeDropdownsOutside);
+            }
+        }
+
+        function openAboutModal(button) {
+            const modal = document.getElementById('about-modal');
+            if (modal.style.display === 'block') {
+                closeAboutModal();
+            } else {
+                modal.style.display = 'block';
+                document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                activeModalButton = button;
+            }
+        }
+
+        function closeAboutModal() {
+            document.getElementById('about-modal').style.display = 'none';
+            if (activeModalButton) {
+                activeModalButton.classList.remove('active');
+                activeModalButton = null;
+            }
+        }
+
+        // Developed by: Bashar Jehad Younis
+        function handleActiveState() {
+            document.addEventListener('click', function(e) {
+                const isNavButton = e.target.closest('.nav-button');
+                const isModal = e.target.closest('.modal');
+                const isModalContent = e.target.closest('.modal-content');
+                
+                if (!isNavButton && !isModal && !isModalContent) {
+                    document.querySelectorAll('.nav-button').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        }
+
+        // Close modals with Esc key - Developed by: Bashar Jehad Younis
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const aboutModal = document.getElementById('about-modal');
+                
+                if (aboutModal.style.display === 'block') {
+                    closeAboutModal();
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            createBinaryRain();
+            loadTickerNews();
+            setupSiteSearch();
+            initializeSlider();
+            handleActiveState();
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.dropdown')) {
+                    document.querySelectorAll('.dropdown').forEach(d => {
+                        d.classList.remove('active');
+                        d.querySelector('.nav-button').classList.remove('active');
+                    });
+                }
+            });
+        });
+
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    if (activeModalButton) {
+                        activeModalButton.classList.remove('active');
+                        activeModalButton = null;
+                    }
+                }
+            });
+        }
+    </script>
+
+<script>
+function goToLinks(event) {
+    if (event) event.preventDefault();
+
+    const aboutModal = document.getElementById('about-modal');
+    if (aboutModal) {
+        aboutModal.style.display = 'none';
+    }
+
+    setTimeout(() => {
+        const linksDropdown = document.querySelector('.links-dropdown');
+        const linksBtn = document.querySelector('.links-btn');
+
+        if (!linksDropdown || !linksBtn) return;
+
+        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+        linksDropdown.classList.add('active');
+
+        linksBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 180);
+
+    return false;
+}
+</script>
+
+</body>
+<!-- Developed by: Bashar Jehad Younis -->
+</html>

@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<!-- © 2025 All rights reserved.
+
+It is strictly prohibited to use, copy, republish, or modify this code in any form without the express written consent of the owner and developer of the website, Bashar Jehad Younis. Any unauthorized use will expose the perpetrator to legal liability. Please note that I have contacted the Head of the Cybersecurity Department at the Jordan University of Science and Technology and obtained official approval to publish this website.
+
+© 2025 جميع الحقوق محفوظة.
+
+يحظر استخدام هذا الكود أو نسخه أو إعادة نشره أو تعديله بأي شكل من الأشكال دون الحصول على موافقة خطية صريحة من مالك ومصمم الموقع بشار جهاد يونس. وبالتناوب إن أي استخدام غير مصرح به سيعرض القائم به للمساءلة القانونية. علمًا أنني قد تواصلت مع رئيس قسم الأمن السيبراني في جامعة العلوم والتكنولوجيا الأردنية، وحصلت على الموافقة الرسمية منه لنشر هذا الموقع. -->
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GC411355JP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GC411355JP');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self';
+              script-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';
+              style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';
+              img-src 'self' data:;
+              font-src 'self' https://cdnjs.cloudflare.com;
+              connect-src 'self';
+              object-src 'none';
+              base-uri 'self';">
+    <meta name="description" content="Capture The Flag">
+    <meta name="keywords" content="Capture The Flag, CTF, Cybersecurity">
+    <title>CTF</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0a0a2a;
+            --secondary-color: #00f3ff;
+            --accent-color: #ff00ff;
+            --text-color: #ffffff;
+            --book-color: #9d4edd;
+            --scrollbar-thumb: #00f3ff;
+            --scrollbar-track: rgba(0, 0, 0, 0.3);
+            --video-thumb-1: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            --video-thumb-2: linear-gradient(135deg, #3a7bd5, #00d2ff, #3a7bd5);
+            --competition-color: #ff5722;
+            --competition-active: #ff8c00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #000;
+            color: var(--text-color);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stars-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.1); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .main-header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            min-height: 80px;
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 1px solid var(--secondary-color);
+            z-index: 2;
+        }
+
+        .home-button {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            text-decoration: none;
+            z-index: 3;
+            transition: all 0.3s ease;
+        }
+        
+        .home-button:hover {
+            color: var(--accent-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .title-container {
+            text-align: center;
+            z-index: 1;
+            padding: 0 20px;
+        }
+
+        .main-title {
+            font-size: 3.2rem;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            letter-spacing: 1.5px;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 2rem;
+            position: relative;
+            min-height: 60vh;
+            max-width: 1300px;
+            margin: 0 auto;
+            flex: 1;
+        }
+
+        .cyber-button {
+            padding: 1.5rem;
+            border: 2px solid var(--secondary-color);
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1.2rem;
+            text-transform: capitalize;
+            position: relative;
+            z-index: 2;
+            text-decoration: none;
+            color: inherit;
+            width: 250px;
+            height: 160px;
+            text-align: center;
+        }
+
+        .cyber-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px var(--accent-color);
+            background: rgba(0, 243, 255, 0.1);
+        }
+
+        .cyber-button.competition-btn {
+            border-color: var(--competition-color);
+        }
+
+        .cyber-button.competition-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px var(--competition-active);
+            background: rgba(255, 87, 34, 0.15);
+        }
+
+        .cyber-button.competition-btn i {
+            color: var(--competition-color);
+        }
+
+        .cyber-button i {
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-container {
+            position: relative;
+            width: 250px;
+            height: 160px;
+        }
+
+        .study-materials-btn {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 15px);
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid var(--secondary-color);
+            border-radius: 15px;
+            padding: 1.2rem;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 1000;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.3);
+        }
+
+        .dropdown-container.competition-dropdown .dropdown-menu {
+            border-color: var(--competition-color);
+            box-shadow: 0 10px 30px rgba(255, 87, 34, 0.3);
+        }
+
+        .dropdown-container.active .dropdown-menu {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .dropdown-container.active .competition-btn {
+            background: rgba(255, 87, 34, 0.2);
+            border-color: var(--competition-active);
+            box-shadow: 0 0 25px var(--competition-active);
+        }
+
+        .dropdown-button {
+            padding: 1rem;
+            border: 1px solid var(--secondary-color);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .dropdown-button.competition-upcoming {
+            border-color: #FF9800;
+        }
+
+        .dropdown-button.competition-running {
+            border-color: #FF9800;
+        }
+
+        .dropdown-button:hover {
+            background: rgba(0, 243, 255, 0.15);
+            box-shadow: 0 0 15px var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .dropdown-button.competition-upcoming:hover {
+            background: rgba(255, 152, 0, 0.15);
+            box-shadow: 0 0 15px #FF9800;
+        }
+
+        .dropdown-button.competition-running:hover {
+            background: rgba(255, 152, 0, 0.15);
+            box-shadow: 0 0 15px #FF9800;
+        }
+
+        .dropdown-button::after {
+            content: '';
+            position: absolute;
+            left: -100%;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0, 243, 255, 0.4),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .dropdown-button:hover::after {
+            left: 100%;
+        }
+
+        .cyber-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cyber-modal-content {
+            position: relative;
+            background: var(--primary-color);
+            padding: 3rem;
+            border: 2px solid var(--secondary-color);
+            border-radius: 15px;
+            max-width: 550px;
+            width: 90%;
+            box-shadow: 0 0 40px var(--accent-color);
+            animation: modalEntrance 0.4s ease-out;
+            text-align: center;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: var(--secondary-color);
+            font-size: 32px;
+            cursor: pointer;
+            transition: color 0.25s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--accent-color);
+            transform: none !important;
+        }
+
+        .cyber-modal-content h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-transform: none;
+        }
+
+        .cyber-modal-content p {
+            line-height: 1.8;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #e0e0ff;
+        }
+
+        .ctf-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes modalEntrance {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        footer {
+            background: #000;
+            padding: 1.5rem 2rem;
+            border-top: 1px solid var(--secondary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80px;
+            width: 100%;
+            margin-top: 80px;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .competition-links-info {
+            background: rgba(255, 87, 34, 0.1);
+            border: 1px solid var(--competition-color);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .competition-links-info h3 {
+            color: var(--competition-color);
+            margin-bottom: 10px;
+        }
+        
+        .competition-links-info p {
+            color: #e0e0ff;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 1200px) {
+            .buttons-container {
+                max-width: 900px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .buttons-container {
+                max-width: 800px;
+                gap: 1.2rem;
+            }
+            
+            .cyber-button, .dropdown-container {
+                width: 230px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .buttons-container {
+                max-width: 700px;
+            }
+            
+            .cyber-button, .dropdown-container {
+                width: 220px;
+            }
+        }
+
+        
+        @media (max-width: 768px) {
+            .buttons-container::before {
+                width: min(92vw, 520px);
+                opacity: 0.08;
+            }
+        }
+
+@media (max-width: 768px) {
+            .main-header {
+                padding-left: 70px;
+                justify-content: center;
+                position: relative;
+            }
+            
+            .home-button {
+                position: absolute;
+                left: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                margin-bottom: 0;
+            }
+            
+            .main-title {
+                font-size: 2.2rem;
+                transform: translateX(-15px);
+            }
+            
+            .buttons-container {
+                flex-direction: column;
+                gap: 2rem;
+                padding: 1.5rem 1rem;
+                justify-content: center;
+                align-items: center;
+                max-width: 100%;
+            }
+            
+            .cyber-button, .dropdown-container {
+                width: 100%;
+                max-width: 320px;
+            }
+            
+            .cyber-button {
+                font-size: 1.15rem;
+                height: 150px;
+            }
+            
+            .dropdown-container {
+                height: auto;
+            }
+            
+            .dropdown-menu {
+                position: relative;
+                margin-top: 5px;
+                top: auto;
+                left: auto;
+                right: auto;
+                width: 100%;
+            }
+            
+            .dropdown-container.active .dropdown-menu {
+                display: flex;
+            }
+            
+            footer {
+                flex-direction: column;
+                gap: 1.2rem;
+                text-align: center;
+                padding: 1.5rem 1rem;
+                width: 100%;
+                position: relative;
+                bottom: 0;
+                margin-top: 40px;
+            }
+            
+            .copyright {
+                margin-top: 0.5rem;
+                text-align: center;
+            }
+
+            .cyber-modal-content {
+                padding: 2rem 1.5rem; 
+                max-width: 90%; 
+                max-height: 80vh; 
+                overflow-y: auto; 
+            }
+    
+            .cyber-modal-content h3 {
+                font-size: 1.6em; 
+            }
+    
+            .cyber-modal-content p {
+                font-size: 1rem;          
+                line-height: 1.6;   
+            }
+        }
+
+        .dropdown-container.active .study-materials-btn {
+            background: rgba(0, 243, 255, 0.2);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 25px var(--accent-color);
+        }
+        
+        .dropdown-container.active .competition-btn {
+            background: rgba(255, 87, 34, 0.2);
+            border-color: var(--competition-active);
+            box-shadow: 0 0 25px var(--competition-active);
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.8rem;
+                transform: translateX(-10px);
+            }
+            .buttons-container {
+                gap: 1.5rem;
+                padding: 1rem 0.5rem;
+            }
+            
+            .cyber-button {
+                height: 140px;
+            }
+            
+            body {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            #academic-page {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .buttons-container {
+                flex: 1;
+            }
+            
+            footer {
+                margin-top: auto;
+                margin-top: 30px;
+            }
+
+            .cyber-modal-content {
+                padding: 1.5rem 1rem; 
+            }
+    
+            .ctf-icon {
+                font-size: 2.5rem; 
+                margin-bottom: 1rem;
+            }
+        }
+        
+        #what-is-ctf-btn span {
+            text-transform: none;
+        }
+    </style>
+    <link rel="stylesheet" href="theme.css">
+</head>
+<body class="secondary-page">
+    <div class="stars-background"></div>
+
+    <div id="academic-page">
+        <header class="main-header">
+            <a href="index.html" class="home-button">
+                <i class="fas fa-home"></i>
+            </a>
+            
+            <div class="title-container">
+                <h1 class="main-title">CTF</h1>
+            </div>
+        </header>
+
+        <div class="buttons-container">
+            
+<a href="https://drive.google.com/drive/folders/1DjP47oEH6EG9_Z6a9387G6Zwo832LM3E?usp=drive_link"
+   target="_blank"
+   class="cyber-button">
+    <i class="fas fa-book"></i>
+    <span>Study Materials</span>
+</a>
+
+
+            <div class="dropdown-container competition-dropdown">
+                <div class="cyber-button competition-btn">
+                    <i class="fas fa-trophy"></i>
+                    <span>CTF Competitions</span>
+                </div>
+                <div class="dropdown-menu">
+                    <a href="https://ctftime.org/event/list/?year=2025&online=-1&format=0&restrictions=-1&upcoming=true" target="_blank" class="dropdown-button competition-upcoming">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Upcoming</span>
+                    </a>
+                    <a href="https://ctftime.org/event/list/?year=2025&online=-1&format=0&restrictions=-1&now=true" target="_blank" class="dropdown-button competition-running">
+                        <i class="fas fa-play-circle"></i>
+                        <span>Now Running</span>
+                    </a>
+                </div>
+            </div>
+
+            <a href="#" class="cyber-button" id="what-is-ctf-btn">
+                <i class="fas fa-flag-checkered"></i>
+                <span>What is CTF</span>
+            </a>
+
+            <a href="https://chat.whatsapp.com/CTm7EOHgiWXKBqvOl4ouMB?mode=ac_t" class="cyber-button" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i>
+                <span>Community</span>
+            </a>
+        </div>
+
+        <div id="ctf-modal" class="cyber-modal">
+            <div class="cyber-modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="ctf-icon">
+                    <i class="fas fa-flag"></i>
+                </div>
+                <h3>
+                    What is CTF?
+                </h3>
+                <p>Capture The Flag (CTF) is a cybersecurity competition where participants solve challenges to find hidden flags. These challenges test skills in areas such as cryptography, web exploitation, reverse engineering, and forensics.</p>
+                <p>CTFs are an excellent way to develop and showcase cybersecurity skills in a competitive and fun environment.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p class="copyright">&copy; 2025 Cybersecurity Department - All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const starsContainer = document.querySelector('.stars-background');
+            const starCount = 200;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const size = Math.random() * 3;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                const duration = 2 + Math.random() * 3;
+                const delay = Math.random() * 5;
+                star.style.animation = `twinkle ${duration}s ${delay}s infinite`;
+                
+                starsContainer.appendChild(star);
+            }
+
+            const dropdownContainers = document.querySelectorAll('.competition-dropdown');
+            
+            document.addEventListener('click', function(e) {
+                dropdownContainers.forEach(container => {
+                    if (!container.contains(e.target)) {
+                        container.classList.remove('active');
+                        const btn = container.querySelector('.cyber-button');
+                        if (btn) btn.classList.remove('active');
+                    }
+                });
+            });
+
+            dropdownContainers.forEach(container => {
+                const btn = container.querySelector('.cyber-button');
+                if (btn) {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        
+                        dropdownContainers.forEach(other => {
+                            if (other !== container) {
+                                other.classList.remove('active');
+                                other.querySelector('.cyber-button')?.classList.remove('active');
+                            }
+                        });
+                        
+                        container.classList.toggle('active');
+                        this.classList.toggle('active');
+                    });
+                }
+            });
+
+            const ctfBtn = document.getElementById('what-is-ctf-btn');
+            const ctfModal = document.getElementById('ctf-modal');
+            const closeCtfModal = document.querySelector('#ctf-modal .close-modal');
+            
+            ctfBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                ctfModal.style.display = 'flex';
+            });
+            
+            closeCtfModal.addEventListener('click', function() {
+                ctfModal.style.display = 'none';
+            });
+            
+            window.addEventListener('click', function(e) {
+                if (e.target === ctfModal) {
+                    ctfModal.style.display = 'none';
+                }
+            });
+            
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && ctfModal.style.display === 'flex') {
+                    ctfModal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+<!-- Developed by: Bashar Jehad Younis -->
+</html>
