@@ -772,6 +772,28 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
             outline: none;
         }
 
+
+        .about-inline-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-inline-start: 4px;
+            vertical-align: middle;
+        }
+
+        .about-inline-link i {
+            background: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+
         @media (max-width: 768px) {
             .site-search-section {
                 padding: 10px 14px 6px;
@@ -802,6 +824,43 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
 
             .mobile-motivation {
                 display: none !important;
+            }
+
+            .links-dropdown {
+                width: min(92vw, 370px);
+            }
+
+            .links-dropdown .dropdown-content {
+                width: 100%;
+                left: 0;
+                right: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .links-dropdown .dropdown-content .nav-button,
+            .links-dropdown .dropdown-content button {
+                width: 100% !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+                justify-content: flex-start;
+                box-sizing: border-box;
+                display: flex;
+                padding: 14px 16px;
+            }
+
+            .links-dropdown .dropdown-content button i,
+            .links-dropdown .dropdown-content .nav-button i {
+                color: var(--secondary-color) !important;
+                min-width: 20px;
+                text-align: center;
+            }
+
+            .links-dropdown .dropdown-content button span,
+            .links-dropdown .dropdown-content .nav-button span {
+                flex: 1;
             }
         }
 
@@ -1019,7 +1078,7 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
             <span class="modal-close" onclick="closeAboutModal()">&times;</span>
             <div class="about-content">
                 <h3>Welcome to Cybersecurity Department Official Website</h3>
-                <p>at Jordan University of Science and Technology <a href="https://www.facebook.com/share/p/1JRaKM55sU/" target="_blank"><i class="fab fa-facebook"></i></a>.</p>
+                <p>at Jordan University of Science and Technology <a href="https://www.facebook.com/share/p/1JRaKM55sU/" target="_blank" rel="noopener noreferrer" class="about-inline-link" aria-label="Open official post"><i class="fas fa-arrow-up-right-from-square"></i></a>.</p>
 
                 <p>This website was developed in 2025 by <strong>Bashar Jehad Younis</strong>, 
                 a second-year Cybersecurity student supervised by <strong>Dr. Qasem Abu Al-Haija</strong>, to create a unified platform for academic needs.</p>
