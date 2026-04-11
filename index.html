@@ -794,6 +794,7 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
             line-height: 1;
         }
 
+        
         @media (max-width: 768px) {
             .site-search-section {
                 padding: 10px 14px 6px;
@@ -826,8 +827,55 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
                 display: none !important;
             }
 
+            .image-slider {
+                width: 94vw;
+                max-width: 94vw;
+                min-height: 250px;
+                max-height: none;
+                aspect-ratio: 16 / 10;
+                margin: 1.5rem auto 2rem;
+                border-radius: 16px;
+            }
+
+            .slider-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                background: rgba(0, 0, 0, 0.55);
+            }
+
+            .slider-nav {
+                width: 38px;
+                height: 38px;
+                padding: 10px;
+            }
+
+            .prev-slide {
+                left: 10px;
+            }
+
+            .next-slide {
+                right: 10px;
+            }
+
+            .social-icons {
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+
+            .social-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
+                box-shadow: 0 0 10px rgba(0, 243, 255, 0.28);
+            }
+
             .links-dropdown {
                 width: min(92vw, 370px);
+            }
+
+            .links-dropdown > .links-btn {
+                width: 100%;
             }
 
             .links-dropdown .dropdown-content {
@@ -835,6 +883,7 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
                 left: 0;
                 right: 0;
                 padding: 0;
+                margin: 0;
                 box-sizing: border-box;
             }
 
@@ -843,26 +892,57 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
                 width: 100% !important;
                 min-width: 100% !important;
                 max-width: 100% !important;
+                height: auto !important;
+                min-height: 52px;
                 margin: 0 !important;
+                padding: 14px 16px !important;
+                border: none !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
                 border-radius: 0 !important;
-                justify-content: flex-start;
-                box-sizing: border-box;
+                background: transparent !important;
+                background-image: none !important;
+                backdrop-filter: none !important;
+                animation: none !important;
+                box-shadow: none !important;
+                overflow: visible !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                gap: 10px !important;
+                box-sizing: border-box !important;
+            }
+
+            .links-dropdown .dropdown-content .nav-button #container-stars,
+            .links-dropdown .dropdown-content .nav-button #glow {
+                display: none !important;
+            }
+
+            .links-dropdown .dropdown-content .nav-button strong,
+            .links-dropdown .dropdown-content button strong,
+            .links-dropdown .dropdown-content button span,
+            .links-dropdown .dropdown-content .nav-button span {
                 display: flex;
-                padding: 14px 16px;
+                align-items: center;
+                gap: 10px;
+                width: 100%;
+                flex: 1;
+                padding: 0 !important;
             }
 
             .links-dropdown .dropdown-content button i,
             .links-dropdown .dropdown-content .nav-button i {
-                color: var(--secondary-color) !important;
+                color: #d4af37 !important;
                 min-width: 20px;
                 text-align: center;
+                flex-shrink: 0;
             }
 
-            .links-dropdown .dropdown-content button span,
-            .links-dropdown .dropdown-content .nav-button span {
-                flex: 1;
+            .about-inline-link i {
+                font-size: 0.95rem;
+                color: var(--secondary-color);
             }
         }
+
 
     </style>
     <link rel="stylesheet" href="theme.css">
