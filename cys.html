@@ -1702,7 +1702,7 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
 
         <!-FooterDeveloped by: Bashar Jehad Younis -->
         <footer>
-            <p class="copyright">&copy; 2025 Cybersecurity DepartmentAll Rights Reserved</p>
+            <p class="copyright">&copy; <span id="year"></span> Cybersecurity Department - All Rights Reserved</p>
         </footer>
     </div>
 
@@ -3080,6 +3080,7 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
         };
 
         document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById("year").textContent = new Date().getFullYear();
             // Create stars backgroundDeveloped by: Bashar Jehad Younis
             const starsContainer = document.querySelector('.stars-background');
             const starCount = 150;
