@@ -809,7 +809,7 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
     </main>
 
     <footer>
-        <p class="copyright">&copy; 2025 Cybersecurity Department - All Rights Reserved</p>
+        <p class="copyright">&copy; <span id="year"></span> Cybersecurity Department - All Rights Reserved</p>
     </footer>
 
     <script>
@@ -1172,6 +1172,7 @@ It is strictly prohibited to use, copy, republish, or modify this code in any fo
         }
 
         document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById("year").textContent = new Date().getFullYear();
             createStars();
             initializeCourses();
 
